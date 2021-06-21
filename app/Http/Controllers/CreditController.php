@@ -13,11 +13,12 @@ class CreditController extends Controller
     {
         $new = new Tbl_credit();
 
-
-
-        $new->type = $r->type    ;
+        $new->cin = $r->cin   ;
+        $new->nom = $r->nom   ;
+        $new->prenom = $r->prenom   ;
+        $new->date_nes = $r->date_nes   ;
         $new->montant = $r->montant    ;
-        $new->monsualite = $r->monsualite    ;
+        $new->monsualite = $r->monsualite   ;
         $new->project = $r->project    ;
         $new->duree = $r->duree    ;
         $new->credit_encour = $r->credit_encour    ;

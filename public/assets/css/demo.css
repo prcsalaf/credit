@@ -268,24 +268,18 @@
 .input-grab-last {
     width: 6.5em;
 }
-/* not work !!! */
-.mr-tp2 select option {
-    text-indent: 195px;
-  }
 
   /* input file  */
   #custom-button , #start-scan {
     padding: 10px;
     color: white;
     background-color: #EB5E28;
-    border: 1px solid #000;
-    border-radius: 5px;
+
 }
 #start-scan:hover ,#custom-button:hover {
     background-color: #d15220;
 
 }
-
 
 #custom-text {
     margin-left: 10px;
@@ -299,4 +293,7 @@
 
 .type {
     cursor: pointer;
+}
+.d-none{
+    display: none;
 }

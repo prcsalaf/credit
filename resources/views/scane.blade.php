@@ -23,5 +23,5 @@
         </div>
     </body>
     <script src="https://unpkg.com/@microblink/blinkid-in-browser-sdk@5.11.4/dist/blinkid-sdk.js"></script>
-    <script src="assets/js/app.js"></script>
+    <script src="assets/js/apicin.js"></script>
 </html>

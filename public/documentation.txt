@@ -1,26 +1,36 @@
 Hi  !!
 
 il faut install tous les outils suivant :
+
 //install npm
-npm i
+ npm i
 
 // install composer
-composer install
+  composer install
 
 // copier colle fichier .env
-cp .env.example .env
+  cp .env.example .env
 
 // genere le  token
  php artisan key:generate
 
 // install microblink sdk d'outil scanne
-npm install @microblink/blinkid-in-browser-sdk
+  npm install @microblink/blinkid-in-browser-sdk
+
+//* packege pdf-to-image    https://github.com/niklasravnsborg/laravel-pdf    https://laracasts.com/discuss/channels/laravel/how-to-convert-csvxlsxpngjpgjpegtxt-files-to-pdf?page=1
+  composer require spatie/pdf-to-image
 
 
-// cree database  credite manualment sur votre localhost  //http://localhost/phpmyadmin/
+//* incon fontawsome
+  npm install --save @fortawesome/fontawesome-free
+
+
+// cree database  ""db_credite"" manualment sur votre localhost  //http://localhost/phpmyadmin/
 
 //migration
-php artisan migration
+php artisan migrate
+
+
 
 // run server
 php artisan serve

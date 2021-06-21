@@ -10,15 +10,15 @@
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
-
+ <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link href="assets/css/demo.css" rel="stylesheet" />
     <!-- CSS Files -->
 
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="assets/css/paper-bootstrap-wizard.css" rel="stylesheet" />
     <link rel="stylesheet" href="assets/css/rangestyle.css">
 
-    <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link href="assets/css/demo.css" rel="stylesheet" />
+
 
     <!-- Fonts and Icons -->
     <link href="https://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.css" rel="stylesheet">
@@ -51,7 +51,7 @@
                                 <!--        You can switch " data-color="green" "  with one of the next bright colors: "blue", "azure", "orange", "red"       -->
 
                                 <div class="wizard-header">
-                                    <h3 class="wizard-title">Simulez votre crédit</h3>
+                                    <h3 class="wizard-title text-primary">Simulez votre crédit</h3>
                                 </div>
                                 <div class="wizard-navigation">
                                     <div class="progress-with-circle">
@@ -218,48 +218,59 @@
                                         </div>
                                     </div>
                                     <div class="tab-pane" id="tap4">
+                                        <h5 class="info-text">Capter des fichiers  </h5>
                                         <div class="row">
-                                            <div class="mr-tp2">
-                                                <div class="form-group">
-                                                    <input type="file" id="real-file" name="file_pdf" accept=".pdf"
-                                                        class="invisible" />
-                                                    <button class="col-sm-5 col-sm-offset-2" type="button"
-                                                        id="custom-button">CHOOSE A FILE</button>
-                                                    <span id="custom-text">No file chosen, yet.</span>
-                                                </div>
-
-                                            </div>
-                                            <div class="mr-tp2">
-                                                <div class="form-group">
-                                                    <input type="file" id="real-file" accept="image/*"
-                                                        class="invisible" />
-                                                    <button class="col-sm-5 col-sm-offset-2" type="button"
-                                                        id="custom-button">Scanne Carte Cin</button>
-                                                    <span id="custom-text">No file chosen, yet.</span>
-                                                </div>
-                                            </div>
-                                            <div class="mr-tp2" id="creen-start">
+                                             {{-- <div class="mr-tp2 col-md-3" id="creen-start">
                                               <div class="form-group">
-                                                 <div id="screen-initial" style="display: none;">
+                                                   <div id="screen-initial" style="display: none;">
                                                     <h1 id="msg">Loading...</h1>
                                                     <progress id="load-progress" value="0" max="100"></progress>
                                                  </div>
                                                 <div class="form-group" >
-                                                    <button class="col-sm-5 col-sm-offset-2" type="button"
-                                                        id="start-scan">  Scanne cin</button>
+                                                    <button class="icon-circle " type="button"
+                                                        id="start-scan">   <i class="ti-upload"></i> </button>
+                                                        {{-- <input type="hidden" name="cin" id="cin">
+
                                                 </div>
 
-
                                              </div>
+                                            </div> --}}
+                                            <div class="mr-tp2 col-md-3">
+                                                <div class="form-group">
+                                                    <input type="file" id="real-file" name="rien" accept=".pdf" class="invisible  " />
+                                                    <input type="hidden" name="nom" id="nom" class="invisible">
+                                                    <input type="hidden" name="prenom" id="prenom" class="invisible">
+                                                    <input type="hidden" name="dateN" id="dateN" class="invisible">
+                                                    <button class="icon-circle " type="button"    id="custom-button">
+                                                         <i class="ti-camera"></i>
 
+                                                    </button><p>Scanne CIN </p>
+
+                                                </div>
 
                                             </div>
+                                            <div class="mr-tp2 col-md-3">
+                                                <div class="form-group">
+                                                    <input type="file" id="real-file" name="file_pdf" accept=".pdf"
+                                                        class="invisible  " />
+                                                    <button class="icon-circle " type="button" id="custom-button">
+                                                        <i class="ti-camera"></i>
+                                                    </button>
+                                                    <p> Fiche payent</p>
+                                                </div>
 
+                                            </div>
+                                            <div class="mr-tp2 col-md-3">
+                                                <div class="form-group">
+                                                    <input type="file" id="real-file" accept="image/*"
+                                                        class="invisible" />
+                                                    <button class="icon-circle " type="button" id="custom-button">
+                                                         <i class="ti-camera"></i>
+                                                     </button>
+                                                    <p> Fiche payent</p>
 
-
-
-
-
+                                                </div>
+                                            </div>
 
                                         </div>
                                     </div>
@@ -331,7 +342,7 @@
 
 <!-- Sdk blibkid  -->
   <script src="https://unpkg.com/@microblink/blinkid-in-browser-sdk@5.11.4/dist/blinkid-sdk.js"></script>
-  <script src="assets/js/app.js"></script>
+  <script src="assets/js/apicin.js"></script>
 
 
   <script>

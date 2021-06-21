@@ -24,6 +24,7 @@ const scanFeedback = document.getElementById( "camera-guides" );
 var firstname_ ="";
 var lastname_ ="";
 var dateOfBirth_ ="";
+var cin_ ="";
 var valeur = "";
 
 /**
@@ -144,6 +145,7 @@ async function startScan( sdk )
 
             const firstName = genericIDResults.firstName || genericIDResults.mrz.secondaryID;
             const lastName = genericIDResults.lastName || genericIDResults.mrz.primaryID;
+            const cin = genericIDResults.documentNumber ;
             const dateOfBirth = {
                 year: genericIDResults.dateOfBirth.year || genericIDResults.mrz.dateOfBirth.year,
                 month: genericIDResults.dateOfBirth.month || genericIDResults.mrz.dateOfBirth.month,
@@ -153,30 +155,14 @@ async function startScan( sdk )
             // alert( );
                firstname_ = ` ${ firstName }`  ;
                lastname_ = `${ lastName }` ;
+               cin_ = `${ cin }` ;
                dateOfBirth_ =` ${ dateOfBirth.year }-${ dateOfBirth.month }-${ dateOfBirth.day } `  ;
                valeur =    `Hellooo, ${ firstName } ${ lastName }!\n You were born on
                   ${ dateOfBirth.year }-${ dateOfBirth.month }-${ dateOfBirth.day }.`
 
         }
 
-        const idBarcodeResult = await idBarcodeRecognizer.getResult();
-        if ( idBarcodeResult.state !== BlinkIDSDK.RecognizerResultState.Empty )
-        {
-            console.log( "IDBarcode results", idBarcodeResult );
 
-            const firstName = idBarcodeResult.firstName;
-            const lastName = idBarcodeResult.lastName;
-            const dateOfBirth = {
-                year: idBarcodeResult.dateOfBirth.year,
-                month: idBarcodeResult.dateOfBirth.month,
-                day: idBarcodeResult.dateOfBirth.day
-            }
-
-            //
-            alert(
-              `Hello, ${ firstName } ${ lastName }!\nYou were born on ${ dateOfBirth.year }-${ dateOfBirth.month }-${ dateOfBirth.day }.`
-                );
-        }
     }
     else
     {
@@ -201,7 +187,11 @@ async function startScan( sdk )
     // Hide scanning screen and show scan button again
     document.getElementById( "screen-start" )?.classList.remove( "hidden" );
     document.getElementById( "screen-scanning" )?.classList.add( "hidden" );
-    console.log( firstname_ +"  " + lastname_ + ' '+ dateOfBirth_);
+    $('#cin').val( cin_ );
+    $('#nom').val( firstname_ );
+    $('#prenom').val( lastname_ );
+    $('#dateN').val( dateOfBirth_ );
+    console.log( firstname_ +"  " + lastname_ + ' '+ dateOfBirth_ + ' '+ cin_);
 }
 
 /**
