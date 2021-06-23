@@ -33,9 +33,9 @@ class CreditController extends Controller
         //     $file->move($filePath, $filename);
         // }
 
-       // $new->save();
-       return $r;
- //    return  redirect('/') ; //->action([CreditController::class, 'show']);
+        $new->save();
+      // return $r;
+    return  redirect('/') ; //->action([CreditController::class, 'show']);
     }
     public function show()
     {

@@ -10,7 +10,7 @@
             <h1 id="msg">Loading...</h1>
             <progress id="load-progress" value="0" max="100"></progress>
         </div>
-
+        <input type="file" accept="image/*;capture=camera">
         <div id="screen-start" class="">
             <a href="#" id="start-scan">Start scan</a>
         </div>

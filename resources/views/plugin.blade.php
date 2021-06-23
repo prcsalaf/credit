@@ -29,10 +29,6 @@
     <link href="assets/css/demo.css" rel="stylesheet" />
 
 
-
-
-
-
 </head>
 
 <body>
@@ -146,31 +142,29 @@
 
                                             </div>
                                             <div class="col-sm-12">
-                                                <div class="vertically-stacked-slider form-group">
+                                                <div class="vertically-stacked-slider form-group ">
 
                                                     <label for="montant">MONTANT SOUHAITÉ </label>
                                                     <label class="elem-right   ">
                                                         <input type="number" value="0.00" step="500"
-                                                            class="form-control  input-grab montant"> dh </label>
+                                                            class="form-control  input-grab montant disable_"> dh </label>
                                                     <input type="range" name="montant" value="0" min="0" max="0"
-                                                        step="500" class="montant">
+                                                        step="500" class="montant disable_">
                                                 </div>
-                                                <div class="vertically-stacked-slider">
+                                                <div class="vertically-stacked-slider  ">
                                                     <label for="mensualite"> MENSUALITÉ</label>
                                                     <label class="elem-right ">
-                                                        <input type="number" value="0.00" step="0.01" name="monsualite"
-                                                            class="form-control input-grab mensualite"> dh </label>
-                                                    <input type="range" value="0" min="0" max="0" step="0.01"
-                                                        class="mensualite">
+                                                        <input type="number" value="0.00" min="0"  step="1" name="monsualite"
+                                                             class="form-control input-grab mensualite1 disable_"> dh </label>
+                                                        <input type="range" value="0" min="0"  step="1" class="mensualite2 disable_">
+
                                                 </div>
-                                                <div class="vertically-stacked-slider">
+                                                <div class="vertically-stacked-slider  ">
                                                     <label for="duree"> DURÉE</label>
                                                     <label class="elem-right ">
-                                                        <input type="number" value="0"
-                                                            class="form-control  input-grab input-grab-last duree">
-                                                        mois</label>
-                                                    <input type="range" name="duree" value="0" min="0" max="100"
-                                                        step="1" class="duree">
+                                                        <input type="number" value="0"  step="1" class="form-control  input-grab input-grab-last duree disable_">  mois</label>
+                                                        <input type="range"  value="0"  step="1" class="duree disable_" name="duree">
+
                                                 </div>
                                             </div>
 
@@ -317,9 +311,6 @@
                 </div>
             </div> <!-- row -->
         </div> <!--  big container -->
-
-
-
 
 
     </div>

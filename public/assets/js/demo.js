@@ -1,5 +1,11 @@
+
 current_color = $(".wizard-card").data("color");
 full_color = true;
+
+
+var Regle_v = "";
+var list_menst =   new Array();
+
 
 $(document).ready(function () {
     $(".fixed-plugin a, .fixed-plugin .badge").click(function (event) {
@@ -56,58 +62,64 @@ $(document).ready(function () {
     }
 });
 
+
+
 // partie de brogressbar de credit   dure , mensualite , montant ;
 
     //  default  disabled input trange
-    $('.montant').css({'cursor': 'no-drop'}).attr('disabled','disabled') ;
-    $('.mensualite').css({'cursor': 'no-drop'}).attr('disabled','disabled') ;
-    $('.duree').css({'cursor': 'no-drop'}).attr('disabled','disabled') ;
-$('.type').on('change',function(){
- // enable the range
-    $('.montant').css({'cursor': 'pointer'}).removeAttr('disabled') ;
-    $('.mensualite').css({'cursor': 'pointer'}).removeAttr('disabled') ;
-    $('.duree').css({'cursor': 'pointer'}).removeAttr('disabled') ;
-  //  set regle the range
-    var ind = $(this).val() ;
+    $('.disable_').css({'cursor': 'no-drop'}).attr('disabled','disabled') ;
+
+  $('.type').on('change',function(){
+  // enable the range
+    $('.disable_').css({'cursor': 'pointer'}).removeAttr('disabled') ;
+   //  set regle the range
+    var ind = this.value ;
     var list  = window.laravel.rgls ;
      Regle_v = list.find(element => element.type  == ind  );
-  // set value
-      var mensulaite_max =     getMens( Regle_v.min_mont  , Regle_v.taux  , Regle_v.min_dure )  ;
-      var duree_max = getdure( Regle_v.min_mont   , Regle_v.taux  , Regle_v.min_mens );
-
+   // set value
       $('.montant').attr({'max' : Regle_v.max_mont ,'min' :  Regle_v.min_mont }).val(  Regle_v.min_mont  ) ;
-      $('.mensualite').attr({'max' : mensulaite_max,'min' :  Regle_v.min_mens }).val(  Regle_v.min_mens   ) ;
-    if (duree_max  > Regle_v.max_dure ) {
-      $('.duree').attr({'max' : Regle_v.max_dure  ,'min' :  Regle_v.min_dure }).val(   Regle_v.max_dure   );
-    }else{
-       $('.duree').attr({'max' : duree_max  ,'min' :  Regle_v.min_dure }).val(   duree_max  );
-    }
+      $('.mensualite1').attr({'max' : Regle_v.max_mont ,'min' :  Regle_v.min_mont }) ;
+      $('.duree').attr({ 'min' :  Regle_v.min_dure  }) ;
+      calcMensualite();
+
 });
-// set value input
+   // set value input
 $(document).on('input', ".montant" ,  function( ) {
-    $('.montant').val($(this).val()   );
-     reglmens();
-     console.log('fin***********************************');
+    $('.montant').val( $(this).val() );
+     calcMensualite();
+
 });
-$(document).on('input', ".mensualite"  ,function(){
-    console.log("index //"+this.value);
-    $('.mensualite').val(  $(this).val() ) ;
-    //  calul montant de credit
+$(document).on('input', ".mensualite1"  ,function(){
+    console.log("index 1-- //"+this.value);
 
-    var result = getdure( $('.montant').val(), Regle_v.taux  , $(this).val()  );
+    const ind_ = list_menst.indexOf(this.value) ;
 
-    var duree_max = getdure( $('.montant').val(), Regle_v.taux  , $('.mensualite').attr('min') );
-    if (duree_max  > Regle_v.max_dure ) {
-      $('.duree').attr({'max' :  Regle_v.max_dure  }).val(   result  );
-    }else{
-        $('.duree').attr({'max' : duree_max    }).val(   result  );
+    if (ind_  != -1 ) {
+
+        $('.mensualite2').val(  ind_ ) ;
+
+    } else {
+
     }
+
+
+});
+
+$(document).on('input', ".mensualite2"  ,function(){
+
+    var dure = parseInt(  $('.duree').attr('max') ) - parseInt(this.value) ;
+    $('.mensualite1').val(  list_menst[this.value] ) ;
+    $('.duree').val( dure ) ;
+
 });
 
 $(document).on('input', ".duree" ,function(){
     $('.duree').val(   $(this).val()   ) ;
     var result = getMens( $('.montant').val() , Regle_v.taux ,  $(this).val()  );
-    $('.mensualite').val(  result);
+    const ind_ = list_menst.indexOf(result) ;
+    console.log( "index" + ind_ );
+    $('.mensualite1').val(  result);
+    $('.mensualite2').val(  ind_ );
 });
 // function calcul la mensualite , le credit  et la duree
 function getMens(mont , taux , dure ){
@@ -125,34 +137,43 @@ function getMont(mens , taux , dure){
     var result_ = ( 12 * mens * ( 1 - Math.pow ( 1 + ( taux /12 ) , -dure )) ) / taux ;
     return result_;
 }
-function reglmens() {
-    // calcul la mensualite
-    var result = getMens($('.montant').val() , Regle_v.taux  , $('.duree').val() );
-    // calcul la mensualite dans la duree minimale  et maximale
-    var mensulaite_min =    getMens($('.montant').val() , Regle_v.taux  , Regle_v.max_dure )  ;
-    var mensulaite_max =    getMens($('.montant').val() , Regle_v.taux  , Regle_v.min_dure )   ;
-    var duree_max = '';
-    var duree_ =getdure( $('.montant').val(), Regle_v.taux  ,  result );
-    // si le min mensualite infireur de min mensualite general
-        if ( mensulaite_min <  Regle_v.min_mens ) {
-            //   change dure
-            $('.mensualite').attr({'max' : mensulaite_max , 'min' : Regle_v.min_mens  }).val(   Regle_v.min_mens     ) ;
-            duree_max = getdure( $('.montant').val(), Regle_v.taux  ,  Regle_v.min_mens );
-        }
-        else{
-            $('.mensualite').attr({'max' : mensulaite_max , 'min' : mensulaite_min }).val(  result   ) ;
-            duree_max = getdure( $('.montant').val(), Regle_v.taux  , mensulaite_min );
-        }
-      // si le min duree infireur de min duree general
-        if (duree_  < Regle_v.max_dure ) {
-           $('.duree').attr({'max' : duree_max , 'value' : duree_  }).val( duree_ ) ;
 
-         }
-         else{
-          $('.duree').attr({'max' :  Regle_v.max_dure , 'value' : Regle_v.max_dure    }).val( Regle_v.max_dure );
+function calcMensualite(){
+     console.log( "appel table");
+     list_menst = [] ;
+
+    for (var index = Regle_v.min_dure ; index <= Regle_v.max_dure ; index++ ) {
+
+        const mens = getMens(  $('.montant').val() , Regle_v.taux , index );
+        var cpt = 1 ;
+        if (Regle_v.max_dure == index  ) {
+            console.log(true);
+            cpt = 0 ;
 
         }
+          if( mens < Regle_v.min_mens  || Regle_v.max_dure == index  ){
+            $('.duree').attr({'max' :   index-cpt   }).val( index -cpt ) ;
+               list_menst = list_menst.reverse() ;
+              // console.log( list_menst  );
+              console.log( list_menst.length  );
+              console.log( "duree " + index );
+              index = index - cpt- Regle_v.min_dure ;
+              console.log( index +    ' '+list_menst[  index ] );
+            $('.mensualite1').attr({'max' :   list_menst[index] , 'min' : list_menst[0]  }).val( list_menst[0] ) ;
+            $('.mensualite2').attr({'max' :   index  }).val( 0 ) ;
+
+
+            return ;
+        }
+       else  {
+            list_menst.push(mens);
+        }
+
+
+    }
+
 }
+
 $(document).on('keypress',function(e) {
      if(e.which == 13) {
            e.preventDefault();
