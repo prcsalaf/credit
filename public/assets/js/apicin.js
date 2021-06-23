@@ -75,8 +75,10 @@ function main()
         ( sdk ) =>
         {
             document.getElementById( "screen-initial" )?.classList.add( "hidden" );
-            document.getElementById( "screen-start" )?.classList.remove( "hidden" );
-            document.getElementById( "start-scan" )?.addEventListener( "click", ( ev ) =>
+
+
+            document.getElementById( "wizard-card" )?.classList.remove( "hidden" );
+            document.getElementById( "btn-cin" )?.addEventListener( "click", ( ev ) =>
             {
                 ev.preventDefault();
                 startScan( sdk );
@@ -95,8 +97,8 @@ function main()
  */
 async function startScan( sdk )
 {
-    document.getElementById( "screen-start" )?.classList.add( "hidden" );
-    document.getElementById( "screen-scanning" )?.classList.remove( "hidden" );
+     $('#form').addClass('d-none');
+     $('#screen-scanning').removeClass('d-none');
 
     // 1. Create a recognizer objects which will be used to recognize single image or stream of images.
     //
@@ -185,8 +187,10 @@ async function startScan( sdk )
     clearDrawCanvas();
 
     // Hide scanning screen and show scan button again
-    document.getElementById( "screen-start" )?.classList.remove( "hidden" );
-    document.getElementById( "screen-scanning" )?.classList.add( "hidden" );
+
+
+    $('#screen-scanning').addClass('d-none');
+    $('#form').removeClass('d-none');
     $('#cin').val( cin_ );
     $('#nom').val( firstname_ );
     $('#prenom').val( lastname_ );
@@ -313,12 +317,12 @@ function setupMessage( displayable )
             updateScanFeedback( "Adjust the angle" );
             break;
         case BlinkIDSDK.DetectionStatus.CameraTooHigh:
-            updateScanFeedback( "Move document closer" );
+            updateScanFeedback( "rapprocher la caméra" );
             break;
         case BlinkIDSDK.DetectionStatus.CameraTooNear:
         case BlinkIDSDK.DetectionStatus.DocumentTooCloseToEdge:
         case BlinkIDSDK.DetectionStatus.Partial:
-            updateScanFeedback( "Move document farther" );
+            updateScanFeedback( "Eloigner la caméra" );
             break;
         default:
             console.warn( "Unhandled detection status!", displayable.detectionStatus );
@@ -341,7 +345,7 @@ function updateScanFeedback( message, force )
     scanFeedbackLock = true;
     scanFeedback.innerText = message;
 
-    window.setTimeout( () => scanFeedbackLock = false, 1000 );
+    window.setTimeout( () => scanFeedbackLock = false, 5000 );
 }
 
 // Run

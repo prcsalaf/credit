@@ -44,16 +44,12 @@ transparent = true;
             // Code for the Validator
             var $validator = $('.wizard-card form').validate({
         		  rules: {
-                     pproject: {
+                     sf: {
                         required: function(e){
-                            console.log('yea00');
+                            console.log('yea00' + e.value  );
 
                             return true;
                         }
-                      },
-                      pproject: {
-                        required: true,
-                        remote  :false,
                       },
                       ttype: {
                         required: true,
@@ -73,12 +69,12 @@ transparent = true;
                         required: true ,
                         accept : 'pdf'
                       }
-
                 },
                 messages :{
-                    project:{
+                    s:{
                         required: function(){
-                            $('.choice ').find('.card').css( 'border', '1px solid red' );
+                            $('.choice ').find('.card').addClass( {'border': '1px solid red' ,'color': 'red'} );
+                            // $('.choice ').find('.card').addClass( 'invalide');
                             return false
                         }
                     }

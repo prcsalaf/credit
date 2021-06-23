@@ -10,13 +10,13 @@
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
- <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link href="assets/css/demo.css" rel="stylesheet" />
+
     <!-- CSS Files -->
 
      <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="assets/css/paper-bootstrap-wizard.css" rel="stylesheet" />
     <link rel="stylesheet" href="assets/css/rangestyle.css">
+    {{-- <link rel="stylesheet" href="assets/css/styleScan.css"> --}}
 
 
 
@@ -25,6 +25,8 @@
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
     <link href="assets/css/themify-icons.css" rel="stylesheet">
 
+<!-- CSS Just for demo purpose, don't include it in your project -->
+    <link href="assets/css/demo.css" rel="stylesheet" />
 
 
 
@@ -46,7 +48,10 @@
                     <!--      Wizard container        -->
                     <div class="wizard-container">
                         <div class="card wizard-card" data-color="red" id="wizard">
-                            <form action="credit/ajouter" method="post" enctype="multipart/form-data">
+
+
+                            <form action="credit/ajouter" method="post" enctype="multipart/form-data" id="form">
+
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <!--        You can switch " data-color="green" "  with one of the next bright colors: "blue", "azure", "orange", "red"       -->
 
@@ -103,7 +108,7 @@
                                             <div class="col-sm-8 col-sm-offset-2">
                                                 <div class="col-sm-6  ">
                                                     <div class="choice" data-toggle="wizard-checkbox">
-                                                        <input type="checkbox" name="project" value="Cash">
+                                                        <input type="checkbox" name="sf[]" value="Cash">
                                                         <div class="card card-checkboxes card-hover-effect">
                                                             <i class="ti-money"></i>
                                                             <p>Cash</p>
@@ -112,7 +117,7 @@
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="choice" data-toggle="wizard-checkbox">
-                                                        <input type="checkbox" name="project" value="Automobile">
+                                                        <input type="checkbox" name="sf[]" value="Automobile">
                                                         <div class="card card-checkboxes card-hover-effect">
                                                             <i class="ti-car"></i>
                                                             <p>Automobile</p>
@@ -145,7 +150,7 @@
 
                                                     <label for="montant">MONTANT SOUHAITÉ </label>
                                                     <label class="elem-right   ">
-                                                        <input type="number" value="0.00" step="100"
+                                                        <input type="number" value="0.00" step="500"
                                                             class="form-control  input-grab montant"> dh </label>
                                                     <input type="range" name="montant" value="0" min="0" max="0"
                                                         step="500" class="montant">
@@ -218,14 +223,14 @@
                                         </div>
                                     </div>
                                     <div class="tab-pane" id="tap4">
-                                        <h5 class="info-text">Capter des fichiers  </h5>
-                                        <div class="row">
+                                        <h5 class="info-text" id="msg">Capter des fichiers  </h5>
+                                        <div class="row center-eleme">
                                              {{-- <div class="mr-tp2 col-md-3" id="creen-start">
                                               <div class="form-group">
                                                    <div id="screen-initial" style="display: none;">
-                                                    <h1 id="msg">Loading...</h1>
-                                                    <progress id="load-progress" value="0" max="100"></progress>
-                                                 </div>
+                                                       <h1 id="msg">Loading...</h1>
+                                                        <progress id="load-progress" value="0" max="100"></progress>
+                                                    </div>
                                                 <div class="form-group" >
                                                     <button class="icon-circle " type="button"
                                                         id="start-scan">   <i class="ti-upload"></i> </button>
@@ -235,13 +240,17 @@
 
                                              </div>
                                             </div> --}}
-                                            <div class="mr-tp2 col-md-3">
+                                            <div class="mr-tp2 custom-button col-md-3" id="creen-start">
                                                 <div class="form-group">
-                                                    <input type="file" id="real-file" name="rien" accept=".pdf" class="invisible  " />
+                                                    <div id="screen-initial" style="display: none;">
+                                                         <progress id="load-progress" value="0" max="100"></progress>
+                                                     </div>
+                                                    <input type="file" id="real-file" name="rien" accept=".pdf" class="invisible " />
+                                                    <input type="hidden" name="cin" id="cin">
                                                     <input type="hidden" name="nom" id="nom" class="invisible">
                                                     <input type="hidden" name="prenom" id="prenom" class="invisible">
                                                     <input type="hidden" name="dateN" id="dateN" class="invisible">
-                                                    <button class="icon-circle " type="button"    id="custom-button">
+                                                    <button class=" " type="button"    id="btn-cin">
                                                          <i class="ti-camera"></i>
 
                                                     </button><p>Scanne CIN </p>
@@ -249,25 +258,25 @@
                                                 </div>
 
                                             </div>
-                                            <div class="mr-tp2 col-md-3">
+                                            <div class="mr-tp2 custom-button col-md-3">
                                                 <div class="form-group">
-                                                    <input type="file" id="real-file" name="file_pdf" accept=".pdf"
+                                                    <input type="file" id="real-file" name="file_pdff" accept=".pdf"
                                                         class="invisible  " />
-                                                    <button class="icon-circle " type="button" id="custom-button">
+                                                    <button class="  " type="button" id="btn-rb">
                                                         <i class="ti-camera"></i>
                                                     </button>
-                                                    <p> Fiche payent</p>
+                                                    <p  > Relevé bancaire</p>
                                                 </div>
 
                                             </div>
-                                            <div class="mr-tp2 col-md-3">
+                                            <div class="mr-tp2 custom-button col-md-3">
                                                 <div class="form-group">
                                                     <input type="file" id="real-file" accept="image/*"
                                                         class="invisible" />
-                                                    <button class="icon-circle " type="button" id="custom-button">
+                                                    <button class="  " type="button" id="btn-fp">
                                                          <i class="ti-camera"></i>
                                                      </button>
-                                                    <p> Fiche payent</p>
+                                                    <p> Fiche de paie</p>
 
                                                 </div>
                                             </div>
@@ -294,18 +303,22 @@
                                 </div>
 
                             </form>
+
+                               <div id="screen-scanning" class="d-none">
+                                    <video id="camera-feed" playsinline></video>
+                                    <!-- Recognition events will be drawn here. -->
+                                    <canvas id="camera-feedback"></canvas>
+                                    <p id="camera-guides">Point the camera towards front side of a document.</p>
+                                </div>
+
+
                         </div>
                     </div> <!-- wizard container -->
                 </div>
             </div> <!-- row -->
         </div> <!--  big container -->
 
-        <div id="screen-scanning" class="hidden">
-        <video id="camera-feed" playsinline></video>
-        <!-- Recognition events will be drawn here. -->
-        <canvas id="camera-feedback"></canvas>
-        <p id="camera-guides">Point the camera towards front side of a document.</p>
-    </div>
+
 
 
 
@@ -346,16 +359,18 @@
 
 
   <script>
-     $('#start-scan').click(function(){
+     $('#btn-cin').click(function(){
 
-             $('#screen-scanning').css({'width': '100%',
-                'z-index': '10',
-                'position': 'absolute',
-                'top': '50px',
-                'width': '100%',
-                'height': '100%',
-            });
-             $('#camera-feed').css({'width': '100%'});
+            //  $('#screen-scanning').css({'width': '100%',
+            //     'z-index': '10',
+            //     'position': 'absolute',
+            //     'top': '50px',
+            //     'width': '100%',
+            //     'height': '100%',
+            // });
+            //  $('#camera-feed').css({'width': '100%'});
+
+
 
      });
 
