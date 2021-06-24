@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Tbl_credit;
 use App\Models\Tbl_Regle;
 use Illuminate\Http\Request;
+use SebastianBergmann\Environment\Console;
 
 class CreditController extends Controller
 {
@@ -41,6 +42,31 @@ class CreditController extends Controller
     {
         $list = Tbl_credit::all();
         return  response()->json($list)  ;
+    }
+
+    public function OCRtst(Request $r){
+
+
+        if($r->file('file'))
+        {
+            $file = $r->file('file');
+            $filename = $r->cin. '.' . $r->file('file')->extension();
+            $filePath = public_path() . '/assets/pdf/';
+            $file->move($filePath, $filename);
+            return  $r;
+        }
+
+
+     return  $r;
+
+
+
+    }
+
+      public function t( )
+      {
+           $DocumentProcessorServiceClient = require('@google-cloud/documentai');
+
     }
 
 }

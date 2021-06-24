@@ -20,6 +20,11 @@ il faut install tous les outils suivant :
 //* packege pdf-to-image    https://github.com/niklasravnsborg/laravel-pdf    https://laracasts.com/discuss/channels/laravel/how-to-convert-csvxlsxpngjpgjpegtxt-files-to-pdf?page=1
   composer require spatie/pdf-to-image
 
+//* packege OCR googl cloud
+  npm i @google-cloud/documentai
+
+//* le package Guzzle dans Laravel, c'est un client PHP HTTP pour envoyer des requêtes HTTP.
+ composer require guzzlehttp/guzzle:~6.0
 
 //* incon fontawsome
   npm install --save @fortawesome/fontawesome-free

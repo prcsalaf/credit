@@ -89,18 +89,33 @@ $(document).on('input', ".montant" ,  function( ) {
      calcMensualite();
 
 });
-$(document).on('input', ".mensualite1"  ,function(){
-    console.log("index 1-- //"+this.value);
+$('.mensualite1').change( ".mensualite1"  ,function(){
+    console.log("index -- //"+this.value);
 
-    const ind_ = list_menst.indexOf(this.value) ;
+    var ind_ = list_menst.indexOf(this.value) ;
 
     if (ind_  != -1 ) {
 
         $('.mensualite2').val(  ind_ ) ;
 
-    } else {
-
     }
+    else if ( this.value < list_menst[i])
+
+    {
+        for (var i = 0; i <  list_menst.length-1 ; i++){
+            if ( list_menst[i] < this.value && list_menst[i+1] > this.value ) {
+                var val = Round(this.value , list_menst[i] , list_menst[i+1] , i ) ;
+                ind_ = list_menst.indexOf( val ) ;
+                console.log(ind_ );
+                  $('.mensualite1').val(   val ) ;
+                  $('.mensualite2').val(   ind_ ) ;
+            }
+
+        }
+    }
+
+
+
 
 
 });
@@ -174,6 +189,21 @@ function calcMensualite(){
 
 }
 
+function Round(value , min , max , index ){
+
+    var rslt1 = value - min ;
+    var rslt2 = max - value ;
+
+    console.log('min '+ rslt1);
+    console.log('max '+ rslt2);
+
+    if (rslt1 > rslt2) {
+        return max ;
+    }
+    else return min  ;
+
+}
+
 $(document).on('keypress',function(e) {
      if(e.which == 13) {
            e.preventDefault();
@@ -183,4 +213,29 @@ $(document).on('keypress',function(e) {
 $('.btn-finish').click(function(e){
     // e.preventDefault();
     $(this).submit();
+});
+
+const realFileBtn = document.getElementById("file-rb");
+$('#btn-rb').click(function(){
+
+    realFileBtn.click();
+
+});
+
+
+realFileBtn.addEventListener("change", function () {
+    if (realFileBtn.value) {
+        // customTxt.innerHTML = realFileBtn.value.match(
+        //     /[\/\\]([\w\d\s\.\-\(\)]+)$/
+        // )[1];
+        console.log(' ok');
+       $('#btn-rb').css({   'color' : 'green' , 'border':' 1px solid green' ,});
+       $('#txt-rb').css({   'color' : 'green'    });
+
+
+    } else {
+       // customTxt.innerHTML = "No file chosen, yet.";
+       $('#btn-rb').css({   'color' : 'red' , 'border':' 1px solid red' ,});
+       $('#txt-rb').css({   'color' : 'red'    });
+    }
 });

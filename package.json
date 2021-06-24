@@ -17,7 +17,12 @@
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.15.3",
+        "@google-cloud/documentai": "^2.10.0",
         "@microblink/blinkid-in-browser-sdk": "^5.11.4",
-        "jquery": "^3.6.0"
-    }
+        "bootstrap": "^5.0.2",
+        "jquery": "^3.6.0",
+        "require": "^2.4.20",
+        "requirejs": "^2.3.6"
+    },
+    "type": "module"
 }

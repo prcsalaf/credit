@@ -239,12 +239,12 @@
                                                     <div id="screen-initial" style="display: none;">
                                                          <progress id="load-progress" value="0" max="100"></progress>
                                                      </div>
-                                                    <input type="file" id="real-file" name="rien" accept=".pdf" class="invisible " />
-                                                    <input type="hidden" name="cin" id="cin">
-                                                    <input type="hidden" name="nom" id="nom" class="invisible">
-                                                    <input type="hidden" name="prenom" id="prenom" class="invisible">
-                                                    <input type="hidden" name="dateN" id="dateN" class="invisible">
-                                                    <button class=" " type="button"    id="btn-cin">
+                                                        <input type="file" id="real-file" name="rien" accept=".pdf" class="invisible " />
+                                                        <input type="hidden" name="cin" id="cin">
+                                                        <input type="hidden" name="nom" id="nom" class="invisible">
+                                                        <input type="hidden" name="prenom" id="prenom" class="invisible">
+                                                        <input type="hidden" name="dateN" id="dateN" class="invisible">
+                                                        <button class=" " type="button"    id="btn-cin">
                                                          <i class="ti-camera"></i>
 
                                                     </button><p>Scanne CIN </p>
@@ -252,14 +252,14 @@
                                                 </div>
 
                                             </div>
-                                            <div class="mr-tp2 custom-button col-md-3">
+                                            <div class="mr-tp2 custom-button col-md-3" >
                                                 <div class="form-group">
-                                                    <input type="file" id="real-file" name="file_pdff" accept=".pdf"
+                                                    <input type="file" id="file-rb" name="file_pdff" accept=".pdf"
                                                         class="invisible  " />
-                                                    <button class="  " type="button" id="btn-rb">
-                                                        <i class="ti-camera"></i>
-                                                    </button>
-                                                    <p  > Relevé bancaire</p>
+                                                    <button class="  " id="btn-rb" type="button"> <i class="ti-camera"></i>   </button>
+                                                    <p  id="txt-rb">   Relevé bancaire</p>
+
+
                                                 </div>
 
                                             </div>
@@ -351,17 +351,6 @@
 
   <script>
      $('#btn-cin').click(function(){
-
-            //  $('#screen-scanning').css({'width': '100%',
-            //     'z-index': '10',
-            //     'position': 'absolute',
-            //     'top': '50px',
-            //     'width': '100%',
-            //     'height': '100%',
-            // });
-            //  $('#camera-feed').css({'width': '100%'});
-
-
 
      });
 

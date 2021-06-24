@@ -21,6 +21,11 @@ Route::get('/s', function () {
     return view('scane');
 });
 
+Route::get('/o', function () {
+    return view('ocr');
+});
+Route::post('/pdf/upload', 'App\Http\Controllers\CreditController@OCRtst');
+
 
 Route::get('/','App\Http\Controllers\RegleController@list' );
 Route::get('regle','App\Http\Controllers\RegleController@list' );
