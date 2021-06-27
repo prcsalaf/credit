@@ -71,10 +71,13 @@ transparent = true;
                       }
                 },
                 messages :{
-                    s:{
+                    sf:{
                         required: function(){
-                            $('.choice ').find('.card').addClass( {'border': '1px solid red' ,'color': 'red'} );
-                            // $('.choice ').find('.card').addClass( 'invalide');
+                            //  $('.choice ').find('.card').addClass( {'border': '1px solid red' ,'color': 'red'} );
+                             $('.choice ').find('.card').addClass( 'invalide');
+                             $('#sf-error').remove();
+                             $(this).remove();
+
                             return false
                         }
                     }
@@ -150,29 +153,19 @@ transparent = true;
                     readURL(this);
                 });
 
-                // $('[data-toggle="wizard-radio"]').click(function(){
-                //     wizard = $(this).closest('.wizard-card');
-                //     wizard.find('[data-toggle="wizard-radio"]').removeClass('active');
-                //     $(this).addClass('active');
-                //     $(wizard).find('[type="radio"]').removeAttr('checked');
-                //     $(this).find('[type="radio"]').attr('checked','true');
-                // });
+
 
                 $('.choice').click(function(){
+                    $('.choice ').find('.card').removeClass( 'invalide');
                     $('.choice').removeClass('active');
-                    $('.choice input').removeAttr('checked');
+                    $('.choice input').removeProp('checked');
 
                     $(this).addClass('active');
-                    $(this).find('[type="checkbox"]').attr('checked','true')
+                    $(this).find('[type="checkbox"]').prop('checked','true')
 
-
+                    $('#tap1').find('[type="hidden"]').val( $(this).find('[type="checkbox"]').val());
                 });
 
-                $('.choice input').click(function(){
-
-                      $(this).attr('checked','true');
-
-                });
 
 
 

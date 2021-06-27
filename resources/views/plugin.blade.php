@@ -102,9 +102,10 @@
                                         <h5 class="info-text">Quel est votre projet? </h5>
                                         <div class="row">
                                             <div class="col-sm-8 col-sm-offset-2">
+                                            <input type="hidden" name="projet" class="d-nonee" >
                                                 <div class="col-sm-6  ">
                                                     <div class="choice" data-toggle="wizard-checkbox">
-                                                        <input type="checkbox" name="sf[]" value="Cash">
+                                                        <input type="checkbox" name="sf" value="Cash">
                                                         <div class="card card-checkboxes card-hover-effect">
                                                             <i class="ti-money"></i>
                                                             <p>Cash</p>
@@ -113,7 +114,7 @@
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="choice" data-toggle="wizard-checkbox">
-                                                        <input type="checkbox" name="sf[]" value="Automobile">
+                                                        <input type="checkbox" name="sf" value="Automobile">
                                                         <div class="card card-checkboxes card-hover-effect">
                                                             <i class="ti-car"></i>
                                                             <p>Automobile</p>
@@ -121,6 +122,8 @@
                                                     </div>
                                                 </div>
                                             </div>
+
+
                                         </div>
                                     </div>
                                     <div class="tab-pane" id="tap2">

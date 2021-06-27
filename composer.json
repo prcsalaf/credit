@@ -11,8 +11,7 @@
         "guzzlehttp/guzzle": "~6.0",
         "laravel/framework": "^8.40",
         "laravel/tinker": "^2.5",
-        "laravel/ui": "^3.3",
-        "spatie/pdf-to-image": "^2.1",
+        "laravel/ui": "^3.3", 
         "twbs/bootstrap": "4.6.0"
     },
     "require-dev": {

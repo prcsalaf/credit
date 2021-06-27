@@ -11,7 +11,8 @@
     },
     "devDependencies": {
         "axios": "^0.21.1",
-        "laravel-mix": "^6.0.6",
+        "json-loader": "^0.5.7",
+        "laravel-mix": "^6.0.25",
         "lodash": "^4.17.19",
         "postcss": "^8.1.14"
     },
@@ -24,5 +25,5 @@
         "require": "^2.4.20",
         "requirejs": "^2.3.6"
     },
-    "type": "module"
+    "stream": false
 }

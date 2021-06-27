@@ -94,7 +94,7 @@
                     (f = a.validator.staticRules(j)),
                     b)
                 ) {
-                    case "add":
+                    case "0add":
                         a.extend(f, a.validator.normalizeRule(c)),
                             delete f.messages,
                             (e[j.name] = f),
@@ -183,7 +183,7 @@
                 rules: {},
                 errorClass: "error",
                 validClass: "valid",
-                errorElement: "label",
+                errorElement: "span",
                 focusCleanup: !1,
                 focusInvalid: !0,
                 errorContainer: a([]),
@@ -222,16 +222,18 @@
                         ? this.element(a)
                         : a.parentNode.name in this.submitted &&
                           this.element(a.parentNode);
+                          console.log("__"+d);
                 },
                 highlight: function (b, c, d) {
-                    "radio" === b.type
+                    "checkbox" === b.type
                         ? this.findByName(b.name).addClass(c).removeClass(d)
                         : a(b).addClass(c).removeClass(d);
                 },
                 unhighlight: function (b, c, d) {
-                    "radio" === b.type
+                    "checkbox" === b.type
                         ? this.findByName(b.name).removeClass(c).addClass(d)
                         : a(b).removeClass(c).addClass(d);
+                        console.log("__"+d);
                 },
             },
             setDefaults: function (b) {
