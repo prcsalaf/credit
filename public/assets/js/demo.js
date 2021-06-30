@@ -104,19 +104,18 @@ $('.mensualite1').change( ".mensualite1"  ,function(){
     {
         for (var i = 0; i <  list_menst.length-1 ; i++){
             if ( list_menst[i] < this.value && list_menst[i+1] > this.value ) {
-                var val = Round(this.value , list_menst[i] , list_menst[i+1] , i ) ;
+                var val = Round(this.value , list_menst[i] , list_menst[i+1]   ) ;
                 ind_ = list_menst.indexOf( val ) ;
                 console.log(ind_ );
                   $('.mensualite1').val(   val ) ;
                   $('.mensualite2').val(   ind_ ) ;
+
+                  var dure = parseInt(  $('.duree').attr('max') ) - parseInt( ind_) ;
+                  $('.duree').val( dure )
             }
 
         }
     }
-
-
-
-
 
 });
 
@@ -189,7 +188,7 @@ function calcMensualite(){
 
 }
 
-function Round(value , min , max , index ){
+function Round(value , min , max  ){
 
     var rslt1 = value - min ;
     var rslt2 = max - value ;
@@ -205,19 +204,24 @@ function Round(value , min , max , index ){
 }
 
 $(document).on('keypress',function(e) {
-     if(e.which == 13) {
-           e.preventDefault();
-      }
+    if(e.which == 13) {
+          e.preventDefault();
+     }
 });
+
 //  button submit
 $('.btn-finish').click(function(e){
     // e.preventDefault();
     $(this).submit();
 });
+$('button').click(function(e){ 
+    e.preventDefault();
+
+});
 
 const realFileBtn = document.getElementById("file-rb");
-$('#btn-rb').click(function(){
-
+$('#btn-rb').click(function(e){
+    e.preventDefault();
     realFileBtn.click();
 
 });
@@ -239,3 +243,6 @@ realFileBtn.addEventListener("change", function () {
        $('#txt-rb').css({   'color' : 'red'    });
     }
 });
+
+
+

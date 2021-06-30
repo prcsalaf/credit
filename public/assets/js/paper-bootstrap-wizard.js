@@ -45,11 +45,8 @@ transparent = true;
             var $validator = $('.wizard-card form').validate({
         		  rules: {
                      sf: {
-                        required: function(e){
-                            console.log('yea00' + e.value  );
+                        required:true,
 
-                            return true;
-                        }
                       },
                       ttype: {
                         required: true,

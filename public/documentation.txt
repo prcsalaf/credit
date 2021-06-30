@@ -26,8 +26,8 @@ il faut install tous les outils suivant :
 //* le package Guzzle dans Laravel, c'est un client PHP HTTP pour envoyer des requêtes HTTP.
  composer require guzzlehttp/guzzle:~6.0
 
-//* incon fontawsome
-  npm install --save @fortawesome/fontawesome-free
+ //* get parametr with  node js
+ npm i querystring
 
 
 // cree database  ""db_credite"" manualment sur votre localhost  //http://localhost/phpmyadmin/

@@ -26,16 +26,28 @@ class CreditController extends Controller
         $new->nombre_pr = $r->nombre_pr    ;
 
 
-        // if($r->file('file_pdf'))
-        // {
-        //     $file = $r->file('file_pdf');
-        //     $filename = time() . '.' . $r->file('file_pdf')->extension();
-        //     $filePath = public_path() . '/assets/pdf/';
-        //     $file->move($filePath, $filename);
-        // }
+        if($r->file('file_rb'))
+        {
+             $file_rb = $r->file('file_rb');
+             $filename_rb = time() . '.' . $r->file('file_rb')->extension();
+             $filePath_rb = public_path() . '/assets/pdf/';
+             $file_rb->move($filePath_rb, $filename_rb);
+       }
+       if($r->file('file_fp'))
+       {
+            $file_fb = $r->file('file_fp');
+            $filename_fb = time() . '.' . $r->file('file_fp')->extension();
+            $filePath_fb = public_path() . '/assets/pdf/';
+            $file_fb->move($filePath_fb, $filename_fb);
+      }
 
-        // $new->save();
-      return $r;
+
+      $path_rb = 'C:/xampp/htdocs/credit/public/assets/pdf/'.$filename_rb ;
+      $path_fb = 'C:/xampp/htdocs/credit/public/assets/pdf/'.$filename_fb ;
+      $result_rb = shell_exec("node C:/xampp/htdocs/credit/public/assets/js/apiocr.js pdf=".$path_rb);
+      $resultfb = shell_exec("node C:/xampp/htdocs/credit/public/assets/js/apiocr.js pdf=".$path_fb);
+       $new->save();
+        return $r;
    //  return  redirect('/') ; //->action([CreditController::class, 'show']);
     }
     public function show()
@@ -53,13 +65,28 @@ class CreditController extends Controller
             $filename = $r->cin. '.' . $r->file('file')->extension();
             $filePath = public_path() . '/assets/pdf/';
             $file->move($filePath, $filename);
-            return  $r;
+
+        }
+        if($r->file('file_rv'))
+        {
+            $file_rv = $r->file('file_rv');
+            $file_rvname = $r->rv. '.' . $r->file('file_rv')->extension();
+            $file_rvPath = public_path() . '/assets/pdf/';
+            $file_rv->move($file_rvPath, $file_rvname);
+
         }
 
+        $path = 'C:/xampp/htdocs/credit/public/assets/pdf/'.$filename ;
+        $path1 = 'C:/xampp/htdocs/credit/public/assets/pdf/'.$file_rvname ;
+        //traitemen
+          $result = shell_exec("node C:/xampp/htdocs/credit/public/assets/js/apiocr.js pdf=".$path);
+          $result1 = shell_exec("node C:/xampp/htdocs/credit/public/assets/js/apiocr.js pdf=".$path1);
 
-     return  $r;
+        //traitemen
+        // $result = shell_exec("node ocr_main.js pdf=".$file);
 
-
+     return  $result.'  <br/><br/><br/><br/><hr/><br/><br/>'.$result1 ;
+   //   return   $r ;
 
     }
 
