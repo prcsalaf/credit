@@ -214,33 +214,42 @@ $('.btn-finish').click(function(e){
     // e.preventDefault();
     $(this).submit();
 });
-$('button').click(function(e){ 
+$('button').click(function(e){
     e.preventDefault();
 
 });
 
 const realFileBtn = document.getElementById("file-rb");
-$('#btn-rb').click(function(e){
-    e.preventDefault();
+const realFile_fp = document.getElementById("file-fp");
+$('#btn-rb-pdf').click(function(e){
     realFileBtn.click();
-
+});
+$('#btn-fp-pdf').click(function(e){
+    realFile_fp.click();
 });
 
 
 realFileBtn.addEventListener("change", function () {
     if (realFileBtn.value) {
-        // customTxt.innerHTML = realFileBtn.value.match(
-        //     /[\/\\]([\w\d\s\.\-\(\)]+)$/
-        // )[1];
-        console.log(' ok');
-       $('#btn-rb').css({   'color' : 'green' , 'border':' 1px solid green' ,});
+       $('#btn-rb-pdf').css({   'color' : 'green' , 'border':' 1px solid green' });
        $('#txt-rb').css({   'color' : 'green'    });
 
+    } else {
+       $('#btn-rb-pdf').css({   'color' : 'red' , 'border':' 1px solid red' });
+       $('#txt-rb').css(   'color' , 'red'    );
+    }
+});
+
+realFile_fp.addEventListener("change", function () {
+    if (realFile_fp.value) {
+       $('#btn-fp-pdf').css({   'color' : 'green' , 'border':' 1px solid green' });
+       $('#txt-fp').css({   'color' : 'green'    });
+       
 
     } else {
-       // customTxt.innerHTML = "No file chosen, yet.";
-       $('#btn-rb').css({   'color' : 'red' , 'border':' 1px solid red' ,});
-       $('#txt-rb').css({   'color' : 'red'    });
+       $('#btn-rb-pdf').css({   'color' : 'red' , 'border':' 1px solid red' });
+       $('#txt-fp').css({   'color' : 'red'    });
+
     }
 });
 

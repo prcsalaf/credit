@@ -27,8 +27,6 @@ class CreateTblCredits extends Migration
             $table->integer('duree');
             $table->double('credit_encour'  );
             $table->integer('nombre_pr');
-            $table->text('Relev');
-            $table->text('Relev');
             $table->timestamps();
         });
     }

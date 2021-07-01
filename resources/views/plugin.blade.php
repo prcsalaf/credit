@@ -240,18 +240,18 @@
                                                 <div class="form-group custom-group">
                                                     <input type="file" id="file-rb" name="file_rb" accept=".pdf" class="d-none invisible " />
 
-                                                    <p   >   Relevé bancaire</p>
+                                                    <p id="txt-rb"  >   Relevé bancaire</p>
                                                     <button  id="btn-rb"  > <i class="ti-camera"></i>   </button>
-                                                    <button  id="btn-rb-img"  > <i class="ti-image"></i>   </button>
+                                                    <button  id="btn-rb-pdf"  > <i class="ti-image"></i>   </button>
                                                 </div>
                                             </div>
                                             <div class="  col-md-11 custom-button ">
                                                 <div class="form-group custom-group">
-                                                    <input type="file" id="real-file" name="file_fp" accept="image/*" class="d-none invisible" />
+                                                    <input type="file" id="file-fp" name="file_fp" accept=".pdf" class="d-none invisible" />
 
-                                                    <p> Fiche de paie</p>
+                                                    <p id="txt-fp"> Fiche de paie</p>
                                                     <button  id="btn-fp"> <i class="ti-camera"></i> </button>
-                                                    <button  id="btn-fp-img"> <i class="ti-image"></i> </button>
+                                                    <button  id="btn-fp-pdf"> <i class="ti-image"></i> </button>
 
                                                 </div>
                                             </div>
@@ -325,8 +325,8 @@
 
 
   <script>
-     $('button').click(function(){
-        e.preventDefault();
+     $('button').click(function(e){
+      //  e.preventDefault();
 
      });
 

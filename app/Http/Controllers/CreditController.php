@@ -45,9 +45,11 @@ class CreditController extends Controller
       $path_rb = 'C:/xampp/htdocs/credit/public/assets/pdf/'.$filename_rb ;
       $path_fb = 'C:/xampp/htdocs/credit/public/assets/pdf/'.$filename_fb ;
       $result_rb = shell_exec("node C:/xampp/htdocs/credit/public/assets/js/apiocr.js pdf=".$path_rb);
-      $resultfb = shell_exec("node C:/xampp/htdocs/credit/public/assets/js/apiocr.js pdf=".$path_fb);
-       $new->save();
-        return $r;
+      $result_fb = shell_exec("node C:/xampp/htdocs/credit/public/assets/js/apiocr.js pdf=".$path_fb);
+      $new->Relev_banq =  $result_rb ;
+      $new->fichie_paie = $result_fb  ;
+        $new->save();
+        return $new;
    //  return  redirect('/') ; //->action([CreditController::class, 'show']);
     }
     public function show()
